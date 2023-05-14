@@ -1,2 +1,4 @@
-# paintingDiary
-re-drawing the arbitrary input picture to cartoon-style picture
+<h1>Painting-Diary</h1>
+<hr>
+	<h3>임의의 사진을 입력받아 특정 그림체의 그림으로 바꿔주는 프로젝트입니다.</h3>
+

@@ -20,7 +20,7 @@
 참고 깃헙 : https://github.com/fawazsammani/The-Complete-Neural-Networks-Bootcamp-Theory-Applications/blob/master/Neural%20Style%20Transfer.ipynb
 </pre>
 <pre>
-먼저 Neural style transfer의 기본적인 컨셉은 그리고 싶은 객체인 content image와 적용하고싶은 그림체를 담은 style image 두개를 input으로 넣습니다.
+먼저 Neural style transfer의 기본적인 컨셉은 그리고 싶은 객체인 content image와 적용하고싶은 그림체를 담은 style image 두개를 input으로 넣습니다. 
 그리고 나서 원하는 output을 그릴 canvas 인 새로운 이미지 x를 초기화합니다. (보통은 gaussian noise로 초기화합니다.)
 전체적인 모델의 inference 과정은, pretrain된 VGG16 모델을 불러옵니다. 이를 feature extractor로 사용하는데요, 
 먼저 content image를 VGG에 통과시키고 VGG 의 뒷부분 layer의 출력값을 저장합니다. 이를 VGG(content)라고 하겠습니다.
@@ -29,5 +29,10 @@
 이렇게 세 종류의 값을 구하면, loss를 구하는데요, 먼저 content loss로 VGG(content) 와 VGG(x) 사이의 거리를 content loss로 합니다.
 다음으로 style loss를 구하기 위해서, 본 논문의 저자는 feature 값 들의 '관계'가 style을 특정한다고 했습니다. 그렇기때문에 단순 VGG의 출력값이 아니라 VGG출력값의 gram matrix를 구하여 gram(VGG(style)) 과 gram(VGG(x)) 의 거리를 style loss로 사용합니다.
 최종적인 loss 는 
-loss = alpha * content_loss + beta * style_loss 형태로 되며, gradient descent를 이용하여 parameter를 갱신하는 것은 오직 x의 값만을 갱신합니다. 이 과정을 지정한 epoch 만큼 진행을 하면 loss가 점점 줄게되면서 content와 style의 loss 비율에 맞게 x가 변화되며 이 optimization 결과가 x에 나오게됩니다.
+$loss = alpha * content_loss + beta * style_loss$
+형태로 되며, gradient descent를 이용하여 parameter를 갱신하는 것은 오직 x의 값만을 갱신합니다. 여기서 지정한 alpha와 beta는 hyperparameter로 content와 style에 각각 어느정도 가중치를 둘 것인지를 정하는것과 같습니다.
+이 과정을 그림으로 보자면 아래와 같습니다. 그림은 위의 github으로부터 가져왔습니다.
+<img src='./images/network2.png'>
+이 과정을 지정한 epoch 만큼 진행을 하면 loss가 점점 줄게되면서 content와 style의 loss 비율에 맞게 x가 변화되며 이 optimization 결과가 x에 나오게됩니다.
+<img src="./images/network.png">
 </pre>

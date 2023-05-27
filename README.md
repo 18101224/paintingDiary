@@ -68,10 +68,12 @@
 
 <img src="./images/돼지머리2.png" width = 50%><img src="./images/img0.jpg" width = 50%>
 이 결과는 style의 content까지 입력된 결과로써, 제 프로젝트의 목적과는 맞지 않는 결과물이며 hyperparameter의 style weight를 낮추어도 style의 content가 들어갑니다.  
-<h4> - 실행화면 및 결과</h4>
+<h4> - 프로젝트의 실행화면 및 결과</h4>
 먼저 프로그램을 실행하면 os 의 파일 브라우저가 실행되며 그림체를 바꾸고자하는 이미지를 선택합니다.  
 
-<img src='images/exeview.png'>
+<img src='images/exeview.png'>   
+
+여기서 style은 이미 모델이 style feature들을 가지고 있기 때문에 추가로 입력하지않습니다.
  
 
 
@@ -85,6 +87,7 @@
 모델 특성상 한 입력에 따라 매번 optimize를 해야하므로 사용자에게 key 입력을 받아 바로바로 hyperparameter를 변경하면서 interation을 하고싶었지만,
 계산량이 많아 즉각적인 변화를 확인할 수 없기때문에 고정된 hyperparameter를 사용합니다.
 
-아래는 여러 hyperparameter 세팅으로 실행을 해보면서 한 입력에 대한 가장 좋은 시각적인 결과를 내어 보았습니다.
+아래는 여러 hyperparameter 세팅으로 실행을 해보면서 한 입력에 대한 가장 좋은 시각적인 결과를 내어 보았습니다.  
+
 <img src='./images/pig_with_mean.png'> 
   

@@ -28,15 +28,22 @@
 <img src="./images/network.png">
 <pre>
 <h3> <strong>변경한점</strong> </h3>
-1. 조금 더 만화같은 결과를 내기 위하여 KMeans를 이용해 color분포를 단순화하는 preprocessing을 진행했습니다.
-2. 모델이 style image로 사용하는 dataset 양 옆에 있는 검은 block을 style로 착각하지 않게끔 하기위하여 crop해주었습니다.
-   <img src = "./images/before.jpg" width=40%> <img src= "./images/img0.jpg" width=22.5%>
-<strong>3. 기존의 코드를 그대로 사용하면 style의 content또한 결과에 들어가므로 style만 가져오고자하는 목적에 어긋나므로 같은 그림체의 여러 style image 에서
-   style feature들을 추출하고, 평균을 내주어 style image instance에 나타나는 bias들을 제거해주어 그림체 변환을 더욱 자연스럽게 만들었습니다. </strong>
-4. 원래 모델은 강한 그림체를(ex 반고흐) 적용하는 것에는 괜찮았으나 미국애니메이션과같은 단순한 그림체를 적용하는 것에 성능이 좋지 않아
-   실험을 통해 최대한 그럴듯한 결과를 내놓게끔 hyperparameter들을 수정하였고, 위의 style instance bias를 줄이는 등의 수정이 있었습니다.
-5. style feature를 추출할 때에 VGG의 앞쪽 레이어일수록 특이한 무늬를 생성하는 것을 확인하여 특이한 무늬들에 대한 영향을 줄이고, 뒷 레이어에 
-   더 가중치를 두기 위해 아래의 exponential 계수를 추가해주었습니다. style_loss의 magnitude가 높아져 style_weight를 더 줄여주었습니다.
+1. 조금 더 만화같은 결과를 내기 위하여 KMeans를 이용해 color분포를 단순화하는 preprocessing을
+   진행했습니다.
+2. 모델이 style image로 사용하는 dataset 양 옆에 있는 검은 block을 style로 착각하지 않게끔
+   하기위하여 crop해주었습니다.  
+
+   <img src = "./images/before.jpg" width=40%><img src= "./images/img0.jpg" width=22.5%>
+<strong>3. 기존의 코드를 그대로 사용하면 style의 content또한 결과에 들어가므로 style만  
+   가져오고자하는 목적에 어긋나므로 같은 그림체의 여러 style image 에서
+   style feature들을 추출하고, 평균을 내주어 style image instance에 나타나는  
+   bias들을 제거해주어 그림체 변환을 더욱 자연스럽게 만들었습니다. </strong>
+4. 원래 모델은 강한 그림체를(ex 반고흐) 적용하는 것에는 괜찮았으나 미국애니메이션과같은 단순한  
+   그림체를 적용하는 것에 성능이 좋지 않아 실험을 통해 최대한 그럴듯한 결과를 내놓게끔  
+   hyperparameter들을 수정하였고, 위의 style instance bias를 줄이는 등의 수정이 있었습니다.
+5. style feature를 추출할 때에 VGG의 앞쪽 레이어일수록 특이한 무늬를 생성하는 것을 확인하여  
+   특이한 무늬들에 대한 영향을 줄이고, 뒷 레이어에 더 가중치를 두기 위해 아래의 exponential  
+   계수를 추가해주었습니다. style_loss의 magnitude가 높아져 style_weight를 더 줄여주었습니다.  
    아래와 같이 수정했습니다.
    for i in VGG_layer:
        style_loss += <strong>np.exp(i**4)</strong>(VGG_i(x)

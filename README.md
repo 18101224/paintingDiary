@@ -47,7 +47,7 @@
 <hr>
 아래는 사용하는 content image 입니다.    
 
-<img src='./images/돼지머리2.jpg' width=50%>  
+<img src='./images/pighead2.jpg' width=50%>  
 <h4> - 기존 모델 적용결과 </h4>
 
 이 이미지를 pytorch.org에 있는 NST tutorial 을 오른쪽 style input과 함께 그대로 사용한다면 아래와 같이 나옵니다.  
@@ -57,13 +57,13 @@
 <h4> - 실행화면 및 결과</h4>
 먼저 프로그램을 실행하면 os 의 파일 브라우저가 실행되며 그림체를 바꾸고자하는 이미지를 선택합니다.  
 
-<img src='images/실행화면.png'>
+<img src='images/exeview.png'>
  
 
 
 
 기존 모델의 문제를 개선하기 위해서 style mean 과 kmeans preprocessing 을 적용한 제 모델의 결과를 확인하면,  
-<img src='./images/실행화면2.png'>
+<img src='./images/exeview2.png'>
 위와같이 나오게됩니다.  
 여전히 갈색배경을 초록색으로 바꾸는 등의 문제는 있지만 기존의 모델을 사용하는 것보다 제 취지에 맞는 결과물이 출력되고 있습니다. 
 또한 입력 이미지에 따라서 hyperparameter를 다르게 설정해야하는데요,  
